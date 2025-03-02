@@ -1,0 +1,57 @@
+GET http://localhost:5000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsIm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW4iLCJpYXQiOjE3NDA5MzUxNDUsImV4cCI6MTc0MDkzNTE2NX0.CBJr7Xi_JzWezQT_MvT6-br-Yzv_-vvKlWdJgvwL8aU
+
+###
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name": "admin",
+    "email": "admin",
+    "password": "123",
+    "confirmPassword": "123"
+}
+
+###
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "admin",
+    "password": "123"
+}
+
+###
+GET http://localhost:5000/token
+
+###
+DELETE http://localhost:5000/logout
+
+# Notes
+###
+GET http://localhost:5000/notes
+
+###
+GET http://localhost:5000/notes/1
+
+###
+POST http://localhost:5000/notes
+Content-Type: application/json
+
+{
+    "title": "Note Test",
+    "content": "Content testing ...",
+    "userId": 1
+}
+
+###
+PATCH  http://localhost:5000/notes/1
+Content-Type: application/json
+
+{
+    "title": "Note test update",
+    "content": "Content testing coba ubah ..."
+}
+
+###
+DELETE http://localhost:5000/notes/2
