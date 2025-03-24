@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate, Link } from 'react-router-dom';
+import { BASE_URL } from "../utils";
 
 
 const Dashboard = () => {
@@ -19,13 +20,13 @@ const Dashboard = () => {
   },[]);
 
   const getNotes = async() => {
-    const response = await axios.get('http://localhost:5000/notes');
+    const response = await axios.get(`${BASE_URL}/notes`);
     setNotes(response.data);
 }
 
 const deleteNote = async(id) => {
     try {
-        await axios.delete(`http://localhost:5000/notes/${id}`);
+        await axios.delete(`${BASE_URL}/notes/${id}`);
         getNotes();
     } catch (error) {
         console.error(error);
@@ -34,7 +35,7 @@ const deleteNote = async(id) => {
 
   const refreshToken = async () => {
     try {
-        const response = await axios.get('http://localhost:5000/token');
+        const response = await axios.get(`${BASE_URL}/token`);
         setToken(response.data.accessToken);
         const decoded = jwtDecode(response.data.accessToken);
         setName(decoded.name);
@@ -51,7 +52,7 @@ const deleteNote = async(id) => {
   axiosJWT.interceptors.request.use(async (config) => {
     const currtentDate = new Date();
     if(expired*1000 < currtentDate.getTime()){
-      const response = await axios.get('http://localhost:5000/token');
+      const response = await axios.get(`${BASE_URL}/token`);
       config.headers.Authorization = `Bearer ${response.data.accessToken}`;
       setToken(response.data.accessToken);
       const decoded = jwtDecode(response.data.accessToken);
@@ -64,7 +65,7 @@ const deleteNote = async(id) => {
   }); 
 
   const getUsers = async () => {
-      const response = await axiosJWT.get('http://localhost:5000/users', {
+      const response = await axiosJWT.get(`${BASE_URL}/users`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

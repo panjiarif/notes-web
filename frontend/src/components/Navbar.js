@@ -1,12 +1,13 @@
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const Logout = async () => {
     try {
-      await axios.delete("http://localhost:5000/logout");
+      await axios.delete(`${BASE_URL}/logout`);
       navigate("/");
     } catch (error) {
       console.log(error);

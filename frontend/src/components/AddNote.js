@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { BASE_URL } from "../utils";
 
 const AddNote = () => {
 const [judul, setJudul] = useState('');
@@ -10,7 +11,7 @@ const navigate = useNavigate();
 const simpanNote = async (e) => {
     e.preventDefault();
     try {
-        await axios.post('http://localhost:5000/notes',{
+        await axios.post(`${BASE_URL}/notes`,{
             title: judul,
             content: isi
         });
