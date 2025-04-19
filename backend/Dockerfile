@@ -1,9 +1,19 @@
 FROM node:20-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm install --production
-# --production : tanpa dev dependencies
-COPY . .
-EXPOSE 8080
-CMD ["node", "index.js"]
 
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install only production dependencies
+RUN npm install --production
+
+# Copy source code
+COPY . .
+
+# Set the expected port (Cloud Run uses 8080)
+EXPOSE 8080
+
+# Run the app
+CMD ["node", "index.js"]
