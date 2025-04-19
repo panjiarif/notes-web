@@ -17,7 +17,7 @@ steps:
         path: "/root/.npm"
 
   # Step 2: Build the frontend
-  - name: "gcr.io/cloud-builder/npm"
+  - name: "gcr.io/cloud-builders/npm"
     entrypoint: "bash"
     args:
       - -c
