@@ -1,1 +1,1 @@
-export const BASE_URL = "https://notes-be-panji-v2-948060519163.us-central1.run.app";
+export const BASE_URL = "http://localhost:5001";
