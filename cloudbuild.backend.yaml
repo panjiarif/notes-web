@@ -15,7 +15,7 @@ steps:
       [
         "run",
         "deploy",
-        "notes-be-panji",
+        "notes-be-panji-v2",
         "--image",
         "gcr.io/$PROJECT_ID/notes-be-panji",
         "--timeout",
