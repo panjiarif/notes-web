@@ -26,7 +26,7 @@ steps:
         "us-central1",
         "--allow-unauthenticated",
       ]
-  
+      
   # Log hanya akan disimpan di Google Cloud Logging, tidak di Google Cloud Storage (butuh hak akses)
 
 options:
