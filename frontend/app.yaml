@@ -1,14 +1,16 @@
 runtime: nodejs20
-service: notes-be-panji
+service: notes-fe-panji  # ⚠️ ganti nama service jika ini frontend
 instance_class: F1
 
 handlers:
-  - url: /
-    static_files: dist/index.html
-    upload: dist/index.html
-
-  - url: /(.*)
+  # Serve static assets
+  - url: /(.*\.(css|js|png|jpg|jpeg|gif|svg|ico|json|woff|woff2|ttf|eot|map))
     static_files: dist/\1
     upload: dist/(.*)
+
+  # Catch-all handler (React SPA fallback)
+  - url: /.*
+    static_files: dist/index.html
+    upload: dist/index.html
 
 default_expiration: "1h"
